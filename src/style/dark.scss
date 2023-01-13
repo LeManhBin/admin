@@ -1,0 +1,74 @@
+.app.dark {
+    background-color: #222;
+    color: #eee;
+
+    
+
+    .items {
+        color: #fff;
+    }
+
+    .featured {
+        background-color: #111;
+    }
+
+    .navbar {
+        color: #fff;
+
+        .search {
+            color: #fff;
+            border: 1px solid #fff;
+
+            input {
+                color: #fff;
+
+                &::placeholder {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .sidebar {
+        background-color: #111;
+        border-color: #999;
+
+        .top {
+            .logo {
+                color: #fff;
+            }
+        }
+
+        ul {
+            li {
+                &:hover {
+                    background-color: #333;
+                    
+                    span {
+                        color: #eee;
+                    }
+                }
+
+                .icon {
+                    color: #999;
+                }
+            }
+        }
+    }
+
+    .datatable {
+        .data-grid {
+            color: #fff;
+            border: none;
+
+            .edit-btn, .delete-btn {
+                color: #999;
+                border: none;
+            }
+        }
+    }
+
+    input {
+        background-color: transparent;
+    }
+}
