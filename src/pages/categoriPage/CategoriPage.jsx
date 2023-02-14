@@ -7,7 +7,7 @@ import { database } from '../../firebase'
 import { getDatabase, onValue, ref, set, remove, update } from 'firebase/database';
 import { toast } from 'react-toastify';
 import { storage } from '../../firebase'
-import { uploadBytes, getDownloadURL } from 'firebase/storage'
+import { ref as refUploadImgs, uploadBytes, getDownloadURL } from 'firebase/storage'
 import UpdateCategori from '../../components/Categori/UpdateCategori/UpdateCategori';
 
 const CategoriPage = () => {
@@ -27,10 +27,11 @@ const CategoriPage = () => {
         }
     }
     //write
-    const writeCategoriData = (id, name, image) => {
-        set(ref(database, '/Category/Categori' + id), {
+    const writeCategoriData = (id, name, url) => {
+        console.log(database, id);
+        set(ref(database,`/Category/Category` + id), {
             id_category: id,
-            image_Category: image,
+            image_Category: url,
             name_Category: name
         })
     }
@@ -40,19 +41,23 @@ const CategoriPage = () => {
         if(!nameCategori || !imgCategori) {
             toast.error("Vui lòng nhập đủ thông tin!!")
         }else{
-            setIdCategori(uuidv4())
-            const imageRef = ref(storage, "/imageCategori"+ idCategori);
+            const id = uuidv4()
+            setIdCategori(id)
+            const imageRef = refUploadImgs(storage, `/imageCategori/image/`+id);
             uploadBytes(imageRef, imgCategori)
             .then(() => {
             getDownloadURL(imageRef).then((url) => {
                 setUrl(url);
+                writeCategoriData(id, nameCategori, url)
+                toast.success("Thêm mới thành công")
             }).catch(error => {
                 console.log(error.message, "err");
             });
-            setImgCategori(null)
+                setImgCategori(null)
             })
-            writeCategoriData(idCategori, nameCategori, url)
-            toast.success("Thêm mới thành công")
+            console.log(id, nameCategori, url);
+            // writeCategoriData(id, nameCategori, url)
+            
         }
       }
       
@@ -90,7 +95,7 @@ const CategoriPage = () => {
             name_Category: nameCategoriEdit,
         })
         setIsUpdate(false)
-        // console.log('update bên employee', fullNameEmployee,phoneNumberEmployee, passwordEmployee)
+        
     }
   return (
     <div className='employee'>
@@ -116,7 +121,7 @@ const CategoriPage = () => {
                   <div className='input-img'>
                     {
                         imgCategori && (
-                            <img src={url} alt=""/>
+                            <img src={imgCategori} alt=""/>
                         )
                     }
                   </div>
@@ -145,6 +150,8 @@ const CategoriPage = () => {
                 imgCategori={imgCategori}
                 imgCategoriEdit={imgCategoriEdit}
                 nameCategoriEdit={nameCategoriEdit}
+                setImgCategoriEdit={setCategoriData}
+                setNameCategoriEdit={setNameCategoriEdit}
                 />
             )
          }

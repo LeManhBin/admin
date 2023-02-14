@@ -37,7 +37,6 @@ const EmployeePage = () => {
         }else{
             setIdEmployee(uuidv4())
             writeEmployeeDta(idEmployee, fullNameEmployee, phoneNumberEmployee, passwordEmployee)
-            console.log(idEmployee, fullNameEmployee, phoneNumberEmployee, passwordEmployee)
             toast.success("Thêm mới thành công!")
         }
     }
@@ -79,7 +78,7 @@ const EmployeePage = () => {
             phoneNumber: phoneNumberEmployeeEdit
         })
         setIsUpdate(false)
-        console.log('update bên employee', fullNameEmployee,phoneNumberEmployee, passwordEmployee)
+        
     }
   return (
     <div className='employee'>

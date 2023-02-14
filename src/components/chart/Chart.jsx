@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './chart.scss'
 import { BarChart,Bar,LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -54,6 +54,7 @@ const data = [
 ];
 
 const Chart = () => {
+  
   return (
     <div className='chart'>
       <p className='title'> Last 1 year</p>

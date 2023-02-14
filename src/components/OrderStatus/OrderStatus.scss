@@ -1,0 +1,17 @@
+.status-container {
+    color: #fff;
+    opacity: .8;
+
+
+    .waiting {
+        background-color: #E64848;
+    }
+
+    .delivering {
+        background-color: #FED049;
+    }   
+
+    .delivered {
+        background-color: #B4FF9F;
+    }
+}

@@ -5,9 +5,10 @@ import DataTableFood from '../../components/Food/DataTableFood/DataTableFood'
 import { storage } from '../../firebase'
 import { database } from '../../firebase'
 import { getDatabase, onValue, ref, set, remove, update } from 'firebase/database';
-import {  uploadBytes, getDownloadURL} from 'firebase/storage'
+import { ref as refUploadImgs, uploadBytes, getDownloadURL} from 'firebase/storage'
 import { toast } from 'react-toastify'
 import { v4 as uuidv4 } from 'uuid';
+import UpdatePopup from '../../components/Food/UpdatePopup/UpdatePopup'
 const FoodPage = () => {
   const [foodData, setFoodData] = useState([])
   const [idFood, setIdFood] = useState("")
@@ -19,7 +20,14 @@ const FoodPage = () => {
   const [image, setImage] = useState();
   const [url, setUrl] = useState()
 
-  
+  const [isUpdate, setIsUpdate] = useState(false)
+  const [tempId, setTempId] = useState("")
+  const [nameFoodEdit, setNameFoodEdit] = useState("")
+  const [categoriFoodEdit, setCategoriFoodEdit] = useState("")
+  const [imageEdit, setImageEdit] = useState("")
+  const [priceFoodEdit, setPriceFoodEdit] = useState(0)
+  const [descFoodEdit, setDescFoodEdit] = useState("")
+
   const handleImageChange = (e) => {
     if(e.target.files[0]) {
       setImage(e.target.files[0]);
@@ -43,18 +51,21 @@ const FoodPage = () => {
     if(!categoriFood || !nameFood || !priceFood || !descFood || !image){
       toast.error("Vui lòng nhập đủ thông tin")
     }else {
-      setIdFood(uuidv4())
-      const imageRef = ref(storage, "/imageFood/"+ idFood);
+      const id = uuidv4()
+      setIdFood(id)
+      const imageRef = refUploadImgs(storage, "/imageFood/image/"+ id);
       uploadBytes(imageRef, image)
       .then(() => {
       getDownloadURL(imageRef).then((url) => {
         setUrl(url);
+        writeFoodData(id, nameFood, url, categoriFood, descFood, priceFood)
+        toast.success("Thêm mới thành công")
     }).catch(error => {
         console.log(error.message, "err");
     });
       setImage(null)
     })
-    writeFoodData(idFood, nameFood, url, categoriFood, descFood, priceFood)
+    
     }
   }
   //read list categori
@@ -101,6 +112,21 @@ const FoodPage = () => {
       toast.error(error)
     }
   }
+
+  //Update
+  const handleUpdate = () => {
+    update(ref(database, '/Food/Food' + tempId), {
+        category_Food: categoriFoodEdit,
+        id_Food: tempId,
+        image_Food: imageEdit,
+        information_Food: descFoodEdit,
+        name_Food: nameFoodEdit,
+        price_Food: priceFoodEdit,
+
+    })
+    setIsUpdate(false)
+    
+}
   return (
     <div className='employee'>
     <Sidebar/>
@@ -159,12 +185,38 @@ const FoodPage = () => {
                 <DataTableFood
                 foodData={foodData}
                 handleDelete={handleDelete}
+                setIsUpdate={setIsUpdate}
+                setTempId={setTempId}
+                setCategoriFoodEdit={setCategoriFoodEdit}
+                setDescFoodEdit={setDescFoodEdit}
+                setImageEdit={setImageEdit}
+                setNameFoodEdit={setNameFoodEdit}
+                setPriceFoodEdit={setPriceFoodEdit}
                 />
               </div>
           </div>
       </div>
       <div className='popup-update'>
-         
+         {
+          isUpdate && (
+            <UpdatePopup
+            setIsUpdate={setIsUpdate}
+            tempId={tempId}
+            handleUpdate={handleUpdate}
+            categoriFoodEdit={categoriFoodEdit}
+            descFoodEdit={descFoodEdit}
+            imageEdit={imageEdit}
+            nameFoodEdit={nameFoodEdit}
+            priceFoodEdit={priceFoodEdit}
+            setCategoriFoodEdit={setCategoriFoodEdit}
+            setDescFoodEdit={setDescFoodEdit}
+            setImageEdit={setImageEdit}
+            setNameFoodEdit={setNameFoodEdit}
+            setPriceFoodEdit={setPriceFoodEdit}
+            categoriList={categoriList}
+            />
+          )
+         }
 
       </div>
     </div>

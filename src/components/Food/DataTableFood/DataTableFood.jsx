@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Pagination from '../../Pagination/Pagination';
-const DataTableFood = ({foodData, handleDelete}) => {
+const DataTableFood = ({foodData, handleDelete,setIsUpdate, setTempId, setCategoriFoodEdit, setDescFoodEdit, setImageEdit, setNameFoodEdit, setPriceFoodEdit}) => {
   const [currentPage, setCurrentPage] = useState(1);
     const [limit, setLimit] = useState(4)
 
@@ -12,6 +12,16 @@ const DataTableFood = ({foodData, handleDelete}) => {
 
     const handleClickDelete = (id) => {
       handleDelete(id)
+    }
+
+    const handleClickShowUpdate = (food) => {
+      setIsUpdate(true)
+      setTempId(food.id_Food)
+      setCategoriFoodEdit(food.category_Food)
+      setNameFoodEdit(food.name_Food)
+      setImageEdit(food.image_Food)
+      setDescFoodEdit(food.information_Food)
+      setPriceFoodEdit(food.price_Food)
     }
   return (
     <div className='table__container' >
@@ -43,7 +53,7 @@ const DataTableFood = ({foodData, handleDelete}) => {
                     {food.price_Food}
                 </td>
                 <td>
-                <button className='edit-btn' >Edit</button>
+                <button className='edit-btn' onClick={() => handleClickShowUpdate(food)}>Edit</button>
                 <button className='delete-btn' onClick={() => handleClickDelete(food.id_Food)}>Delete</button>
                 </td>
             </tr>

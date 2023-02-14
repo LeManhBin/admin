@@ -1,7 +1,7 @@
 import React from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { toast } from 'react-toastify';
-const UpdateCategori = ({setIsUpdate, tempId,handleUpdate, nameCategori,imgCategori, imgCategoriEdit, nameCategoriEdit}) => {
+const UpdateCategori = ({setIsUpdate, tempId,handleUpdate, imgCategoriEdit, nameCategoriEdit, setImgCategoriEdit, setNameCategoriEdit}) => {
 
   const handleClickUpdate = (e) => {
     e.preventDefault()
@@ -23,12 +23,12 @@ const UpdateCategori = ({setIsUpdate, tempId,handleUpdate, nameCategori,imgCateg
             <form>
                 <div className="input-form">
                     <label>Tên Danh Mục</label>
-                    <input type="text" value={nameCategoriEdit}
+                    <input type="text" value={nameCategoriEdit} onChange={(e) => setNameCategoriEdit(e.target.value)}
                     placeholder='Enter your full name'/>
                 </div>
                 <div className="input-form">
                     <label>Hình Ảnh</label>
-                    <input type="file" />
+                    <input type="file" onChange={(e) => setImgCategoriEdit(e.target.files[0])}/>
                     <div className='img'> 
                        <img src={imgCategoriEdit} alt="" />
                     </div>
