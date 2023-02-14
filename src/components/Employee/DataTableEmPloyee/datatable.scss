@@ -1,0 +1,48 @@
+.table__container {
+    text-align: center;
+
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+    
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+    
+        tr:hover {
+            background-color: #ddd;
+        }
+    
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #ff7b54;
+            color: white;
+          }
+
+        button {
+            color: #ddd;
+            border: none;
+            outline: none;
+            padding: 5px 10px;  
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .edit-btn {
+            background-color: #04AA6D;
+            
+        }
+
+        .delete-btn {
+            background-color: #F94A29;
+        }
+    }
+      
+}

@@ -6,6 +6,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BadgeIcon from '@mui/icons-material/Badge';
 import { Link } from "react-router-dom";
 import { DarkModeContext } from '../../context/darkModeContext';
 
@@ -28,6 +29,13 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">LIST</p>
+          <Link to='/employee' className='text-style'>
+            <li>
+              <BadgeIcon className='icon'/>
+              <span>Employee</span>
+            </li>
+          </Link>
+
           <Link to='/users' className='text-style'>
             <li>
               <SupervisedUserCircleIcon className='icon'/>
@@ -35,17 +43,17 @@ const Sidebar = () => {
             </li>
           </Link>
           
-          <Link to='/categoty' className='text-style'>
+          <Link to='/categori' className='text-style'>
             <li>
               <CategoryIcon className='icon'/>
               <span>Category</span>
             </li>
           </Link>
           
-          <Link to='/products' className='text-style'>
+          <Link to='/food' className='text-style'>
             <li>
               <InventoryIcon className='icon'/>
-              <span>Products</span>
+              <span>Food</span>
             </li>
           </Link>
           <Link to='/order' className='text-style'>
