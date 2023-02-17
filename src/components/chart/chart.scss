@@ -7,5 +7,44 @@
         color: #b2b2b2;
     }
 
+    .date-container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-end;
+        margin-bottom: 30px;
+
+        .date-input {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                padding: 5px 10px;
+                outline: none;
+                border:none;
+                border-bottom: 1px solid #333;
+            }
+        }
+        button {
+            padding: 7px 15px;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #537FE7;
+            border: none;
+            border-radius: 5px;
+            
+        }
+    }
+    .select-container {
+        display: flex;
+        flex-direction: column;
+
+        .date-select {
+            padding: 5px 10px;
+            width: 180px;
+        }
+    }
+    
+
     
 }

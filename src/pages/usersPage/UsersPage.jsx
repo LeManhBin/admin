@@ -21,7 +21,6 @@ const UsersPage = () => {
             }
         })
       }
-        console.log(usersData);
         useEffect(() => {
             handleReadData()
         },[])

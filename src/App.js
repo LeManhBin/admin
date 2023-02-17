@@ -50,8 +50,9 @@ function App() {
               <Route index element={<RequireAuth> <OrderPage/></RequireAuth>}/>
               {/* <Route index element={<RequireAuth></RequireAuth>}/> */}
             </Route>
-
           </Route>
+          {/* <Route path="*" index element={<Navigate to="login" replace />}/> */}
+          <Route index element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>
     </div>

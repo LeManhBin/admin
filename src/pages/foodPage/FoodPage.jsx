@@ -65,7 +65,10 @@ const FoodPage = () => {
     });
       setImage(null)
     })
-    
+      setCategoriFood("")
+      setNameFood("")
+      setDescFood("")
+      setPriceFood(0)
     }
   }
   //read list categori
@@ -115,15 +118,26 @@ const FoodPage = () => {
 
   //Update
   const handleUpdate = () => {
-    update(ref(database, '/Food/Food' + tempId), {
-        category_Food: categoriFoodEdit,
-        id_Food: tempId,
-        image_Food: imageEdit,
-        information_Food: descFoodEdit,
-        name_Food: nameFoodEdit,
-        price_Food: priceFoodEdit,
+    
+    const imageRefUpdate = refUploadImgs(storage, "/imageFood/image/"+ tempId);
+        uploadBytes(imageRefUpdate, imageEdit)
+        .then(() => {
+        getDownloadURL(imageRefUpdate).then((url) => {
+        setUrl(url);
+        update(ref(database, '/Food/Food' + tempId), {
+          category_Food: categoriFoodEdit,
+          id_Food: tempId,
+          image_Food: url,
+          information_Food: descFoodEdit,
+          name_Food: nameFoodEdit,
+          price_Food: priceFoodEdit,
+      })
+        }).catch(error => {
+            console.log(error.message, "err");
+        });
+          setImageEdit(null)
+        })
 
-    })
     setIsUpdate(false)
     
 }
@@ -148,10 +162,13 @@ const FoodPage = () => {
                   </div>
                   <div className='input-form'>
                     <select value={categoriFood} onChange={(e) => setCategoriFood(e.target.value)}>
+                      <option value="">Chọn Danh Mục</option>
                         {
                           categoriList.map((value, index) => {
                             return(
-                              <option value={value} key={index}>{value}</option>
+                              <>
+                                <option value={value} key={index}>{value}</option>
+                              </>
                             )
                           })
                         }

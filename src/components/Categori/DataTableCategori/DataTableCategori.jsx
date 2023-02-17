@@ -10,6 +10,7 @@ const DataTableCategori = ({categoriData, handleDelete, setIsUpdate, setTempId, 
     const firstPageIndex = lastPageIndex - limit;
     const currentItem = categoriData.slice(firstPageIndex, lastPageIndex);
 
+
     const totalPage = categoriData.length
 
     const handleClickDelete = (id) => {

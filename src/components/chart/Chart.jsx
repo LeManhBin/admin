@@ -57,6 +57,28 @@ const Chart = () => {
   
   return (
     <div className='chart'>
+      <form >
+        <div className='date-container'>
+          <div className='date-input'>
+              <label>Từ Ngày</label>
+              <input type="date" />
+          </div>
+          <div className='date-input'>
+              <label>Đến Ngày</label>
+              <input type="date" />
+          </div>
+          <button>Lọc</button>
+        </div>
+      </form>
+      <div className='select-container'>
+        <label>Lọc Theo</label>
+        <select className='date-select'>
+            <option value="">Hôm nay</option>
+            <option value="">Tháng Này</option>
+            <option value="">Tháng Trước</option>
+            <option value="">365 Ngày Trước</option>
+        </select>
+      </div>
       <p className='title'> Last 1 year</p>
       <ResponsiveContainer width="100%" height={300}>
       <BarChart

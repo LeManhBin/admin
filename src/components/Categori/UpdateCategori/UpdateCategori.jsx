@@ -13,6 +13,7 @@ const UpdateCategori = ({setIsUpdate, tempId,handleUpdate, imgCategoriEdit, name
     }
     
 }
+
   return (
     <div className='update-container'>
         <div className='update-title'>
@@ -20,17 +21,26 @@ const UpdateCategori = ({setIsUpdate, tempId,handleUpdate, imgCategoriEdit, name
             <span className='update-close' onClick={() => setIsUpdate(false)}><CloseIcon/></span>
         </div>
         <div className='update'>
-            <form>
+            <form onSubmit={handleClickUpdate}>
                 <div className="input-form">
                     <label>Tên Danh Mục</label>
                     <input type="text" value={nameCategoriEdit} onChange={(e) => setNameCategoriEdit(e.target.value)}
                     placeholder='Enter your full name'/>
                 </div>
-                <div className="input-form">
+                {/* <div className="input-form">
                     <label>Hình Ảnh</label>
                     <input type="file" onChange={(e) => setImgCategoriEdit(e.target.files[0])}/>
                     <div className='img'> 
                        <img src={imgCategoriEdit} alt="" />
+                    </div>
+                </div> */}
+                <div className="input-form">
+                    <label>Hình Ảnh</label>
+                    <input type="file" onChange={(e) => {
+                        setImgCategoriEdit(e.target?.files?.[0])
+                    }}/>
+                    <div className='img'> 
+                       <img src={imgCategoriEdit} alt=""/>
                     </div>
                 </div>
                 <button type='submit' className='update-btn'>Update</button>    

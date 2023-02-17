@@ -1,7 +1,8 @@
 .update-container {
-    width: 900px;
-    height: 100vh;
+    width: 500px;
+    height: 600px;
     background-color: antiquewhite;
+    overflow-x: auto;
     .update-title {
         border-bottom: 1px solid #333;
         text-align: center;
@@ -69,6 +70,7 @@
                 color:  #fff;
                 cursor: pointer;
                 border-radius: 4px;
+                margin-bottom: 30px;
             }
 
         }

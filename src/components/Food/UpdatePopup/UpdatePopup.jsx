@@ -24,11 +24,11 @@ const UpdatePopup = ({
             <span className='update-close' onClick={() => setIsUpdate(false)}><CloseIcon/></span>
         </div>
         <div className='update'>
-            <form>
+            <form onSubmit={handleClickUpdate}>
                 <div className="input-form">
                     <label>Tên Món Ăn</label>
                     <input type="text" value={nameFoodEdit}
-                    
+                    onChange={(e) => setNameFoodEdit(e.target.value)}
                     placeholder='Enter your full name'/>
                 </div>
                 <div className="input-form">
@@ -58,7 +58,7 @@ const UpdatePopup = ({
                 </div>
                 <div className="input-form">
                     <label>Giá</label>
-                    <input type="number" value={priceFoodEdit} onChange={(e) => setPriceFoodEdit(e.value.target) }
+                    <input type="number" value={priceFoodEdit} onChange={(e) => setPriceFoodEdit(e.target.value) }
                     placeholder='Enter your Price'/>
                 </div>
                 <button type='submit' className='update-btn'>Update</button>    

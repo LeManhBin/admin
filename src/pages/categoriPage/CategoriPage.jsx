@@ -28,7 +28,6 @@ const CategoriPage = () => {
     }
     //write
     const writeCategoriData = (id, name, url) => {
-        console.log(database, id);
         set(ref(database,`/Category/Category` + id), {
             id_category: id,
             image_Category: url,
@@ -55,9 +54,8 @@ const CategoriPage = () => {
             });
                 setImgCategori(null)
             })
-            console.log(id, nameCategori, url);
             // writeCategoriData(id, nameCategori, url)
-            
+            setNameCategori("")
         }
       }
       
@@ -68,7 +66,9 @@ const CategoriPage = () => {
             const data = snapshot.val();
             if(data !==null){
               Object.values(data).map((categori) => {
-                setCategoriData((prev) => [...prev, categori])
+                setCategoriData((prev) => {
+                    return [...prev, categori]
+                })
               })
             }
         })
@@ -76,6 +76,10 @@ const CategoriPage = () => {
     useEffect(() => {
         handleReadData()
     },[])
+
+    useEffect(() => {
+        console.log(categoriData, 'categoriData');
+    },[categoriData])
 
     //remove 
     const handleDelete = (id) => {
@@ -89,11 +93,21 @@ const CategoriPage = () => {
 
     //update
     const handleUpdate = () => {
-        update(ref(database, '/Category/Category' + tempId), {
-            id_category: tempId,
-            image_Category: imgCategoriEdit,
-            name_Category: nameCategoriEdit,
-        })
+        const imageRefUpdate = refUploadImgs(storage, `/imageCategori/image/`+tempId);
+            uploadBytes(imageRefUpdate, imgCategoriEdit)
+            .then(() => {
+            getDownloadURL(imageRefUpdate).then((url) => {
+                setUrl(url);
+                update(ref(database, '/Category/Category' + tempId), {
+                    id_category: tempId,
+                    image_Category: url,
+                    name_Category: nameCategoriEdit,
+                })
+            }).catch(error => {
+                console.log(error.message, "err");
+            });
+                setImgCategoriEdit(null)
+            })
         setIsUpdate(false)
         
     }
@@ -150,7 +164,7 @@ const CategoriPage = () => {
                 imgCategori={imgCategori}
                 imgCategoriEdit={imgCategoriEdit}
                 nameCategoriEdit={nameCategoriEdit}
-                setImgCategoriEdit={setCategoriData}
+                setImgCategoriEdit={setImgCategoriEdit}
                 setNameCategoriEdit={setNameCategoriEdit}
                 />
             )
