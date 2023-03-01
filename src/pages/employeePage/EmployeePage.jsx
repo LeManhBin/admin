@@ -93,17 +93,17 @@ const EmployeePage = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="input-form">
                         <label>Full Name</label>
-                        <input type="text" value={fullNameEmployee} 
+                        <input required type="text" value={fullNameEmployee} 
                         placeholder='Enter your full name' onChange={(e) => setFullNameEmployee(e.target.value)}/>
                     </div>
                     <div className="input-form">
                         <label>Phone Number</label>
-                        <input type="text" value={phoneNumberEmployee} 
+                        <input required type="text" value={phoneNumberEmployee} 
                         placeholder='Enter your phone number'onChange={(e) => setPhoneNumberEmployee(e.target.value)}/>
                     </div>
                     <div className='input-form'>
                         <label>Password</label>
-                        <input type="text" value={passwordEmployee} 
+                        <input required type="text" value={passwordEmployee} 
                         placeholder='Enter your password' onChange={(e) => setPasswordEmployee(e.target.value)}/>
                     </div>
                     <button type='submit' className='submit-btn'>Submit</button>

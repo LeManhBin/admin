@@ -124,12 +124,12 @@ const CategoriPage = () => {
               <form onSubmit={handleSubmit}>
                   <div className="input-form">
                       <label>Tên Danh Mục</label>
-                      <input type="text" value={nameCategori} 
+                      <input required type="text" value={nameCategori} 
                       placeholder='Enter your full name' onChange={(e) => setNameCategori(e.target.value)}/>
                   </div>
                   <div className="input-form">
                       <label>Hình Ảnh</label>
-                      <input type="file"
+                      <input required type="file"
                       placeholder='Enter your phone number' onChange={(e) => handleUploadImage(e)}/>
                   </div>
                   <div className='input-img'>

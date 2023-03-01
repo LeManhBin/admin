@@ -3,6 +3,7 @@ import OrderStatus from '../../OrderStatus/OrderStatus';
 
 const DataTableOder = ({orderData, handleDelete, setIsView, setOrderId, setListFoodOrder}) => {
 
+
   const handleClickDelete = (id) => {
     handleDelete(id)
   }
@@ -22,6 +23,7 @@ const DataTableOder = ({orderData, handleDelete, setIsView, setOrderId, setListF
           <th>Tên Người Đặt</th>
           <th>Địa Chỉ</th>
           <th>Tổng Tiền</th>
+          <th>Phương Thức Thanh Toán</th>
           <th>Tình Trạng</th>
           <th>Action</th>
         </tr>
@@ -44,6 +46,7 @@ const DataTableOder = ({orderData, handleDelete, setIsView, setOrderId, setListF
                     <td>{order.user.fullName}</td>
                     <td>{order.address_order}</td>
                     <td>{order.total_cart}</td>
+                    <td>{order.payments}</td>
                     <td>
                       {status}
                     </td>

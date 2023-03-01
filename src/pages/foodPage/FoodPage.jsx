@@ -154,7 +154,7 @@ const FoodPage = () => {
               <form onSubmit={handleSubmit}>
                   <div className="input-form">
                       <label>Tên Món Ăn</label>
-                      <input type="text" 
+                      <input required type="text" 
                       placeholder='Please enter dish name'
                       value={nameFood}
                       onChange={(e) => setNameFood(e.target.value)}
@@ -176,7 +176,7 @@ const FoodPage = () => {
                   </div>
                   <div className="input-form">
                       <label>Hình Ảnh</label>
-                      <input type="file" onChange={(e) => handleImageChange(e)}/>
+                      <input required type="file" onChange={(e) => handleImageChange(e)}/>
                   </div>
                   <div className='input-img'>
                     {
@@ -187,13 +187,13 @@ const FoodPage = () => {
                   </div>
                   <div className='input-form'>
                         <label>Mô tả</label>
-                        <textarea name="" id="" cols="30" rows="10"
+                        <textarea required name="" id="" cols="30" rows="10"
                         value={descFood} onChange={(e) => setDescFood(e.target.value)}
                         ></textarea>
                   </div>
                   <div className="input-form">
                       <label>Giá</label>
-                      <input type="number" value={priceFood} onChange={(e) => setPriceFood(e.target.value)}
+                      <input required type="number" value={priceFood} onChange={(e) => setPriceFood(e.target.value)}
                       placeholder='Please enter the price'/>
                   </div>
                   <button type='submit' className='submit-btn'>Submit</button>
