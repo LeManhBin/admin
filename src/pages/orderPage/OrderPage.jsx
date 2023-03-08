@@ -6,8 +6,10 @@ import { database } from '../../firebase'
 import { getDatabase, onValue, ref, set, remove, update } from 'firebase/database';
 import { toast } from 'react-toastify'
 import ViewOrder from '../../components/Oder/ViewOrder/ViewOrder'
+import { useNavigate } from 'react-router-dom'
 
 const OrderPage = () => {
+  const navigate = useNavigate()
   const [orderData, setOrderData] = useState([])
   const [isView, setIsView] = useState(false)
   const [orderId, setOrderId] = useState()
@@ -39,7 +41,10 @@ const OrderPage = () => {
       toast.error(error)
     }
   }
- 
+  
+  const handleCompleteOrderPage = () => {
+    navigate('/order/complete')
+  }
   return (
     <div className='employee'>
     <Sidebar/>
@@ -47,7 +52,8 @@ const OrderPage = () => {
       <Navbar/>
       <div className='employee-desc'>
           <div className='title'>
-              Quản Lí Đơn Hàng
+              <h3>Quản lý đơn hàng</h3>
+              <button onClick={handleCompleteOrderPage}>Đơn hàng đã giao</button>
           </div>
               <div className='table'>
                   <DataTableOder

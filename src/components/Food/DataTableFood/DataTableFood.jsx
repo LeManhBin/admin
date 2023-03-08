@@ -30,8 +30,8 @@ const DataTableFood = ({foodData, handleDelete,setIsUpdate, setTempId, setCatego
         <tr>
           <th>STT</th>
           <th>ID</th>
-          <th>Tên Món</th>
           <th>Danh Mục</th>
+          <th>Tên Món</th>
           <th>Hình Ảnh</th>
           <th>Giá</th>
           <th>Action</th>

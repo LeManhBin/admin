@@ -16,6 +16,16 @@
                 margin-bottom: 20px;
                 box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
                 font-size: 24px;
+                display: flex;
+                justify-content: space-between;
+
+                button {
+                    padding: 0 10px;
+                    border: none;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
             }
 
             .employee-form {

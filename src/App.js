@@ -11,6 +11,7 @@ import CategoriPage from "./pages/categoriPage/CategoriPage";
 import FoodPage from "./pages/foodPage/FoodPage";
 import OrderPage from "./pages/orderPage/OrderPage";
 import UsersPage from "./pages/usersPage/UsersPage";
+import OrderComplete from "./pages/orderComplete/OrderComplete";
 
 
 
@@ -48,6 +49,10 @@ function App() {
             </Route>
             <Route path="order">
               <Route index element={<RequireAuth> <OrderPage/></RequireAuth>}/>
+              {/* <Route index element={<RequireAuth></RequireAuth>}/> */}
+            </Route>
+            <Route path="order/complete">
+              <Route index element={<RequireAuth> <OrderComplete/></RequireAuth>}/>
               {/* <Route index element={<RequireAuth></RequireAuth>}/> */}
             </Route>
           </Route>

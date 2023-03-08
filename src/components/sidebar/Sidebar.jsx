@@ -62,13 +62,6 @@ const Sidebar = () => {
               <span>Orders</span>
             </li>
           </Link>
-          
-          <Link to='/delivery' className='text-style'>
-            <li>
-              <LocalShippingIcon className='icon'/>
-              <span>Delivery</span>
-            </li>
-          </Link>
         </ul>
       </div>
       <div className="bottom">

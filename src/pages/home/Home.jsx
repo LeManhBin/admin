@@ -38,7 +38,7 @@ const Home = ({setDark}) => {
   
   //Order
   const handleReadOrderData = () => {
-    onValue(ref(database, '/Order'), (snapshot) => {
+    onValue(ref(database, '/History'), (snapshot) => {
         setOrderChartData([])
         const data = snapshot.val();
         if(data !==null){
