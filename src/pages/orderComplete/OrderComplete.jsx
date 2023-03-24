@@ -21,6 +21,9 @@ const OrderComplete = () => {
     const [orderCompleteId, setOrderCompleteId] = useState()
     const [listFoodOrderComplete, setListFoodOrderComplete] = useState([])
 
+
+
+
     const handleReadData = () => {
         onValue(ref(database, '/History'), (snapshot) => {
             setOrderComplete([])
@@ -32,7 +35,7 @@ const OrderComplete = () => {
             }
         })
       }
-      console.log(orderComplete, 'aaaaaaaaa');
+      console.log(listFoodOrderComplete, 'aaaaaaaaa');
       useEffect(() => {
         handleReadData()
     },[])
@@ -61,6 +64,7 @@ const OrderComplete = () => {
                         <ViewComplete
                         setIsView={setIsView}
                         listFoodOrderComplete={listFoodOrderComplete} 
+                        orderComplete={orderComplete}
                         />
                     )
                 }

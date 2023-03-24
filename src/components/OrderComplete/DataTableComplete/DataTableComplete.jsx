@@ -4,7 +4,7 @@ const DataTableComplete = ({orderComplete,setOrderCompleteId,setListFoodOrderCom
     const handleShowView = (data) => {
         setIsView(true)
         setOrderCompleteId(data.id_order)
-        setListFoodOrderComplete(data.listFood)
+        setListFoodOrderComplete(data)
     }
   return (
     <div className='table__container' >
@@ -22,6 +22,7 @@ const DataTableComplete = ({orderComplete,setOrderCompleteId,setListFoodOrderCom
       <tbody>
         {
             orderComplete.map((data, index) => {
+                
                 return(
                     <tr key={data.id_order}>
                         <td>{index + 1}</td>

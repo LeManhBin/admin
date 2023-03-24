@@ -1,0 +1,100 @@
+.view-container {
+    width: 900px;
+    height: 600px;
+    background-color: antiquewhite;
+    overflow-x: auto;
+    .view-title {
+        border-bottom: 1px solid #333;
+        text-align: center;
+        background-color: #03C988;
+        color: #fff;
+        position: relative;
+        border-radius: 5px 5px 0px 0px;
+        padding: 5px 0px;
+        font-size: 18px;
+
+        .view-close {
+            position: absolute;
+            right: 5px;
+            cursor: pointer;
+        }
+    }
+
+    .view {
+        background-color: #eee;
+        overflow: auto;
+        height: 600px;
+        padding: 10px 20px;
+        border-radius: 0px 0px 5px 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .driver-infor {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            
+        }
+
+        .order-infor {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .food-infor {
+
+
+            #table-view {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            
+                td, th {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                }
+            
+                tr:nth-child(even){
+                    background-color: #f2f2f2;
+                }
+            
+                tr:hover {
+                    background-color: #ddd;
+                }
+            
+                th {
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    text-align: center;
+                    background-color: #ff7b54;
+                    color: white;
+                  }
+                  tbody {
+                    text-align: center;
+                    tr {
+    
+                        .img {
+                            overflow: hidden;
+                            img {
+                                width: 100px;
+                                height: 50px;
+                            }
+                        }
+                    }
+                  }
+            }
+        }
+        .total-payment {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+
+            span {
+                color:  red;
+            }
+        }
+    }
+}
